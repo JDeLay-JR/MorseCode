@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Morse Code Translator</title>
+	<style type="text/css">
+	      html {
+	         background: url(https://createtoenjoy.files.wordpress.com/2014/11/white-and-black-background.jpg) no-repeat center center fixed #000;
+	         -webkit-background-size: cover;
+	         -moz-background-size: cover;
+	         -o-background-size: cover;
+	         background-size: cover;
+        }
+    
+        .button {
+            background-color: transparent;
+            display:block;
+            height: 50px;
+            width: 200px;
+            margin:0 auto;
+            text-align: center;
+            font-size: 12pt;
+            font-family: "Georgia";
+            color: black; 
+            border: 2px solid #870d02;
+            border-radius: 25px;
+        }
+
+        .button:hover {
+            background-color: #870d02;
+            color: white;
+        }
+        
+        .button:focus {
+            outline: 0;
+        }
+        
+        div.head {
+            font-family: "Georgia";
+            text-align: center;
+        }
+        
+        div.inputform {
+            font-family: "Georgia";
+            text-align: center;
+        }
+        
+        input {
+            height: 50px;
+            width: 600px; 
+            font-size:12pt;
+        }
+        
+        input:focus {
+            outline: 0;
+        }
+        
+        .shape {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          width: 900px;
+          height: 70px;
+          margin: auto;
+          border: .5px solid;
+          -webkit-border-radius: 50% / 10%;
+          font: normal;
+          font-family: georgia;
+          font-size: 20pt;
+          color:#870d02;
+          text-align: center;
+          text-indent: 0.1em;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          background: rgba(95,96,95,0.95);
+        }
+        
+        .morse {
+            font-family: "Georgia";
+            text-align: center;
+            font-size: 16pt;
+            color:#870d02;
+            
+        }
+    
+        
+	</style>
+    
+<script type="text/javascript">
+    var morseCodeLib = {
+	A : ".-",
+	B : "-...",
+	C : "-.-.",
+	D : "-..",
+	E : ".",
+	F : "..-.",
+	G : "--.",
+	H : "....",
+	I : "..",
+	J : ".---",
+	K : "-.-",
+	L : ".-..",
+	M : "--",
+	N : "-.",
+	O : "---",
+	P : ".--.",
+	Q : "--.-",
+	R : ".-.",
+	S : "...",
+	T : "-",
+	U : "..-",
+	V : "...-",
+	W : ".--",
+	X : "-..-",
+	Y : "-.--",
+	Z : "--..",
+    1 : ".----",
+    2 : "..---",
+    3 : "...--",
+    4 : "....-",
+    5 : ".....",
+    6 : "-....",
+    7 : "--...",
+    8 : "---..",
+    9 : "----.",
+    0 : "-----"
+}
+
+    
+function translator(string) {
+    var alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+	string = string.toUpperCase();
+	var output = "|";
+	for(var i = 0; i < string.length; i++) {
+        if(alpha.indexOf(string[i]) === -1) {
+            continue;
+        } else if(string[i] === " ") {
+			output+="&nbsp&nbsp&nbsp|";
+		} else {
+			output += morseCodeLib[string[i]] + "|";
+		}
+	}
+	return document.getElementById('output').innerHTML = output;
+}
+    
+</script>
+    
+</head>
+<body>
+    
+	<div class="head">
+		<h1>
+            <font color=#870d02><u>Morse Code Translator</u></font>
+        </h1>
+        <p>
+            
+        <p>
+    </div>
+    
+    <div class="inputform">
+        <h4>What would you like to translate to Morse Code?</h4>
+        
+        
+            <input id="textInput" type="text">
+        
+        
+    </div>
+    
+    <p>    </p>
+    
+    <div>
+        <button class="button" onclick= translator(document.getElementById('textInput').value)>Submit</button>
+    </div>
+    
+    &nbsp;
+    
+    <div id="output" class="shape" style ="text-align: center;"></div>
+    
+            
+</body>
+</html>
